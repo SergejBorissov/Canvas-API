@@ -1,0 +1,44 @@
+package de.borissov;
+
+import javafx.application.Application;
+import javafx.scene.Group;
+import javafx.scene.Scene;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
+import javafx.stage.Stage;
+
+
+
+public class Main extends Application {
+
+
+        final static  Image image = new Image("imageDrei.png");
+    @Override
+    public void start(Stage stage) throws Exception {
+
+        final Canvas canvas = new Canvas(1280, 700);
+        final GraphicsContext gc = canvas.getGraphicsContext2D();
+
+        //Bild in Originalgröße
+        gc.drawImage(image, 100, 100);
+
+        //Bild skaliert
+        gc.drawImage(image, 600, 228, 256, 256);
+
+        //Bildausschnitt skaliert
+        gc.drawImage(image, 192, 128, 128, 128, 900, 228, 256, 256);
+
+        final Group root = new Group( canvas);
+        final Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+
+
+    }
+
+    public static void main(String[] args) {
+
+        Application.launch(args);
+    }
+}
