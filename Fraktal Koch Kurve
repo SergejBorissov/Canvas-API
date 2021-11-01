@@ -1,0 +1,66 @@
+package de.borissov;
+
+import javafx.application.Application;
+import javafx.scene.Group;
+import javafx.scene.Scene;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
+import javafx.stage.Stage;
+
+
+
+public class Main extends Application {
+
+
+    private static final int WIDTH = 1280;
+    private static final int HEIGHT = 720;
+    private static final int LINE_LENGTH = 500;
+
+    private GraphicsContext graphicsContext;
+
+    @Override
+    public void start(Stage stage) throws Exception {
+
+         final Canvas canvas = new Canvas(WIDTH, HEIGHT);
+         graphicsContext = canvas.getGraphicsContext2D();
+         drawSnowflake();
+
+         final Group root = new Group(canvas);
+         final Scene scene = new Scene(root);
+         stage.setScene(scene);
+         stage.show();
+
+    }
+
+    private void drawSnowflake(){
+        graphicsContext.translate(WIDTH / 2, 80);
+        graphicsContext.rotate(60.0);
+        drawKochCurve(LINE_LENGTH);
+        graphicsContext.rotate(120.0);
+        drawKochCurve(LINE_LENGTH);
+        graphicsContext.rotate(120.0);
+        drawKochCurve(LINE_LENGTH);
+
+    }
+
+    private void drawKochCurve(double length){
+        if(length < 1){
+            graphicsContext.strokeLine(0,0,length, 0);
+            graphicsContext.translate(length, 0 );
+        } else{
+            final double newLength = length / 3;
+            drawKochCurve(newLength);
+            graphicsContext.rotate(-60.0);
+            drawKochCurve(newLength);
+            graphicsContext.rotate(120.0);
+            drawKochCurve(newLength);
+            graphicsContext.rotate(- 60.0);
+            drawKochCurve(newLength);
+        }
+    }
+
+    public static void main(String[] args) {
+
+        Application.launch(args);
+    }
+}
