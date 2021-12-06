@@ -8,6 +8,10 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
+/**
+ * @author: Sergej Borissov
+ *
+ */
 
 
 public class Main extends Application {
