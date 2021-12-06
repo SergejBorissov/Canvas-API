@@ -7,6 +7,10 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.stage.Stage;
 
+/**
+ * @author: Sergej Borissov
+ *
+ */
 
 
 public class Main extends Application {
