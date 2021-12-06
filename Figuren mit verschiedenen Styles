@@ -11,7 +11,10 @@ import javafx.scene.paint.LinearGradient;
 import javafx.scene.paint.Stop;
 import javafx.stage.Stage;
 
-
+/**
+ * @author: Sergej Borissov
+ *
+ */
 
 public class Main extends Application {
 
