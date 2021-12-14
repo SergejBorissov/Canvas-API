@@ -1,0 +1,48 @@
+package de.borissov;
+
+
+import javafx.application.Application;
+import javafx.scene.Group;
+import javafx.scene.Scene;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
+import javafx.stage.Stage;
+
+/**
+ * @author: Sergej Borissov
+ *
+ */
+
+public class RectTest extends Application {
+
+
+    @Override
+    public void start(Stage stage) throws Exception {
+
+        final Canvas canvas = new Canvas(1280,720);
+        final GraphicsContext gc = canvas.getGraphicsContext2D();
+
+
+        for(int i = 0; i < 1000; i += 10)
+        {
+            for(int j = 0; j < 1000; j += 7)
+            {
+                gc.strokeRoundRect(i,j,30,50,20,20);
+
+            }
+        }
+
+
+        final Group root = new Group( canvas);
+        final Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+
+
+    }
+
+    public static void main(String[] args) {
+
+        Application.launch(args);
+    }
+}
